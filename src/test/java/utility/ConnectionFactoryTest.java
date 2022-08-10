@@ -1,2 +1,4 @@
-package utility;public class ConnectionFactoryTest {
+package utility;
+
+public class ConnectionFactoryTest {
 }
