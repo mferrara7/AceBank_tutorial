@@ -1,7 +1,6 @@
 package com.revature.bankapp.util;
 
-import com.revature.bankapp.menus.*;
-import com.revature.bankapp.services.MemberService;
+import com.revature.bankapp.menus.Menu;
 
 import java.io.IOException;
 
@@ -22,7 +21,7 @@ public class MenuRouter {
                 break;
             }
         }
-    }
+    } // handles any menu inherited, because was OL, calling everything below next class
 
     public void transfer(String route) { // the parameter here is the route which will be how we get to the menu we want to go to
         for (Menu menu : menus) {
@@ -31,30 +30,10 @@ public class MenuRouter {
             if (menu.getRoute().equals(route)) {
                 try {
                     menu.render();
-                    System.out.printf("reached render");
                 } catch (IOException e) {// if there is an IOException, prints what is wrong
                     e.printStackTrace();
                 }
             }
         }
-    }
-
-    public void addMenu(MemberService.WelcomeMenu welcomeMenu) {
-
-    }
-
-    public void addMenu(RegisterMenu registerMenu) {
-    }
-
-    public void addMenu(Dashboard dashboard) {
-
-    }
-
-    public void addMenu(LoginMenu loginMenu) {
-
-    }
-
-    public void addMenu(WelcomeMenu welcomeMenu) {
-
     }
 }

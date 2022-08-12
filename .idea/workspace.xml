@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35615ffb-7f02-4a0d-b711-4fb13195a6e2" name="Changes" comment="submitting new corrections">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_postgresql_postgresql_42_3_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AceBank_tutorial.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AceBank_tutorial.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/MainDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/MainDriver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/daos/BankMemberDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/daos/BankMemberDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/daos/Crudable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/daos/Crudable.java" afterDir="false" />
@@ -18,21 +13,13 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/menus/LoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/menus/LoginMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/menus/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/menus/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/menus/RegisterMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/menus/RegisterMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/menus/WelcomeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/menus/WelcomeMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/models/BankMembers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/models/BankMembers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/services/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/services/MemberService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/AppState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/AppState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/ConnectionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/ConnectionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/CustomCollection/Collection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/CustomCollection/Collection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/CustomCollection/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/CustomCollection/LinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/CustomCollection/List.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/CustomCollection/List.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/CustomLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/CustomLogger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/MenuRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/MenuRouter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/exceptions/InvalidUserInputException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/exceptions/InvalidUserInputException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/exceptions/ResourcePersistanceException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/exceptions/ResourcePersistanceException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/exceptions/UnauthorizedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/exceptions/UnauthorizedException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/utility/ConnectionFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utility/ConnectionFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +181,27 @@
           <properties class="java.io.IOException" package="java.io" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassCastException" package="java.lang" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/revature/bankapp/util/MenuRouter.java</url>
+          <line>25</line>
+          <properties class="com.revature.bankapp.util.MenuRouter" method="transfer">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="java-exception" />
+      </default-breakpoints>
     </breakpoint-manager>
   </component>
 </project>

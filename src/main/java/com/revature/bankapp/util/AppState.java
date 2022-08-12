@@ -21,7 +21,7 @@ public class AppState {
         menuRouter = new MenuRouter(); // create the menu router
 
         BufferedReader terminalReader = new BufferedReader(new InputStreamReader(System.in));
-        //this creates the BufferedReader which take an InputStreamReader as a parameter so we can get user input
+        //this creates the BufferedReader which take an InputStreamReader as a parameter, so we can get user input
         BankMemberDao bankMemberDao = new BankMemberDao();
         MemberService memberService = new MemberService();
 
@@ -41,7 +41,7 @@ public class AppState {
 
     public void startup() {
         while (isRunning) {
-            // customLogger.logMessageToFile("Routing to welcome menu...");
+            customLogger.logMessageToFile("Routing to welcome menu...");
             menuRouter.transfer("/welcome");
         }
     }

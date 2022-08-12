@@ -16,7 +16,8 @@ public class ConnectionFactory {
 
     private ConnectionFactory(){
         try {
-            props.load(new FileReader("src/main/resources/db.properties")); // read from db.properties
+            props.load(new FileReader("src/main/resources/db.properties"));
+            // believe error is causing from here since not directly connected
         } catch (IOException e) {
             e.printStackTrace();
         }

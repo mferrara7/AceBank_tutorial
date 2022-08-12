@@ -1,6 +1,5 @@
 package com.revature.bankapp.daos;
 
-import java.lang.reflect.Member;
 import java.util.List;
 
 public interface Crudable<T> { // generic <T> we can use to assign as
@@ -10,7 +9,7 @@ public interface Crudable<T> { // generic <T> we can use to assign as
     T create(T newObject);
 
     //Read
-    List<Member> findAll();
+    List<T> findAll();
     T findById(String id);
 
     // Update

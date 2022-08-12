@@ -25,7 +25,8 @@ public abstract class Menu {// abstract class means methods will not be concrete
     }
 
     public String getRoute() { //returns route
-        return getRoute();
+
+        return route;
     }
 
     // Adding abstract keyword requires that any class that inherits this Menu class MUST implement it

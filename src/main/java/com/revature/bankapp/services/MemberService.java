@@ -10,7 +10,6 @@ import com.revature.bankapp.util.exceptions.ResourcePersistanceException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.lang.reflect.Member;
 import java.util.List;
 
 import static com.revature.bankapp.util.AppState.shutdown;
@@ -19,70 +18,64 @@ public class MemberService {
 
     CustomLogger customLogger = CustomLogger.getLogger(true);
     private final BankMemberDao bankMemberDao;
-    private Member sessionMember = null;
-
+    private BankMembers sessionMember = null;
     // CONSTRUCTOR
     public MemberService(){
-        BankMemberDao BankMemberDao = null;
-        this.bankMemberDao = null;
+        this.bankMemberDao = new BankMemberDao();
     }
     // Methods
-    public Member registerMember(Member newMember) {
+    public BankMembers registerMember(BankMembers newBankMembers) {
         try {
 
-            if (!isMemberValid(newMember)) {
+            if (!isMemberValid(newBankMembers)) {
                 throw new InvalidUserInputException("User input was invalid");
             }
 
-            BankMembers newBankMembers = null;
-            if(!isEmailAvailable(BankMembers.getEmail())){
+            if(!isEmailAvailable(newBankMembers.getEmail())){
                 throw new ResourcePersistanceException("Email is already registered.");
             }
 
-            bankMemberDao.create(newMember);
+            assert bankMemberDao != null;
+            bankMemberDao.create(newBankMembers);
 
-            return newMember;
+            return newBankMembers;
 
-        } catch (InvalidUserInputException | ResourcePersistanceException e) {
-
-            customLogger.warn(e.getMessage());
-            return null;
-        } catch (RuntimeException e){
-            customLogger.warn(e.getMessage());
-            return null;
         } catch (Exception e) {
-            customLogger.warn(e.getMessage());
+            e.printStackTrace();
+            customLogger.warn(e.toString());
             return null;
         }
     }
-    public Member login(String email, String password){
-        Member member = bankMemberDao.loginCredentialCheck(email, password);
-        sessionMember = member;
-        return member;
+    public BankMembers login(String email, String password){
+        BankMembers bankMembers = null;
+        if (bankMemberDao != null) {// this fixed the NullPoint error, and access into dashboard options
+            bankMembers = bankMemberDao.loginCredentialCheck(email, password);
+        }
+        // find why bankMemberDao can be null?
+        sessionMember = (BankMembers) bankMembers;
+        return (BankMembers) bankMembers;
     }
-    public List<Member> readAll(){
+    public List<BankMembers> readAll(){
         return bankMemberDao.findAll();
     }
-    public boolean isMemberValid(Member newMember){
+    public boolean isMemberValid(BankMembers newMember){
         if(newMember == null) return false;
-        BankMembers newBankMembers = null;
-        if(BankMembers.getEmail() == null || BankMembers.getEmail().trim().equals(""))
+        if(newMember.getEmail() == null || newMember.getEmail().trim().equals(""))
             // if "||" entered, means to complete if either tradition is true
              return false;
-        assert false;
-        return newBankMembers.getPassword() != null && !newBankMembers.getPassword().trim().equals("");
+        return newMember.getPassword() != null && !newMember.getPassword().trim().equals("");
     }
     public boolean isEmailAvailable(String email){
-        List<Member> members = readAll();
-        for(int i = 0; i < members.size(); i++){
-            if(BankMembers.get(i) == Boolean.parseBoolean(null)) break;
-            if(BankMembers.getEmail().equals(email)){
+        List<BankMembers> bankMembers = readAll();
+        for(int i = 0; i < bankMembers.size(); i++){
+            if(bankMembers.get(i) == null) break;
+            if(bankMembers.get(i).getEmail().equals(email)){
                 return false;
             }
         }
         return true;
     }
-    public Member getSessionMember(){
+    public BankMembers getSessionMember(){
 
         return sessionMember;
     }
@@ -98,11 +91,10 @@ public class MemberService {
     public static class WelcomeMenu extends Menu {
         //inheritance
         CustomLogger customLogger = CustomLogger.getLogger(true); // create the customLogger object
-        private final MemberService memberService; // declaration, technically null
 
         public WelcomeMenu(BufferedReader terminalReader, MenuRouter menuRouter, MemberService memberService) {
             super("Welcome", "/welcome", terminalReader, menuRouter);
-            this.memberService = memberService;
+            // declaration, technically null
         }
 
         @Override // this indicates we are overriding the method we are inheriting

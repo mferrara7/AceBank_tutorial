@@ -1,6 +1,5 @@
 package com.revature.bankapp.menus;
 
-import com.revature.bankapp.models.BankMembers;
 import com.revature.bankapp.services.MemberService;
 import com.revature.bankapp.util.ConnectionFactory;
 import com.revature.bankapp.util.CustomLogger;
@@ -13,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Dashboard extends Menu{
+public class Dashboard extends LoginMenu{ // does memu need to be LoginMenu to connect???
     CustomLogger customLogger = CustomLogger.getLogger(true);
     private final MemberService memberService;
 
@@ -25,7 +24,7 @@ public class Dashboard extends Menu{
     @Override
     public void render() throws IOException {
 
-        System.out.println(BankMembers.getEmail() +  "Entered dashboard!\n 1) Make a Withdrawal \n 2) Make a Deposit \n 3) View current balance \n 4) Logout" );
+        System.out.println(memberService.getSessionMember().getEmail() +  "Entered dashboard!\n 1) Make a Withdrawal \n 2) Make a Deposit \n 3) View current balance \n 4) Logout" );
 
         String userInput = terminalReader.readLine();
 
@@ -42,7 +41,7 @@ public class Dashboard extends Menu{
                     try (Connection conn = ConnectionFactory.getConnectionFactory().getConnection()) {
                         String sql = "select balance from members where email = ?";
                         PreparedStatement ps = conn.prepareStatement(sql);
-                        ps.setString(1, memberService.getSessionMember().getName());
+                        ps.setString(1, memberService.getSessionMember().getEmail());
                         // getName() is used for getEmail(), kept getting a rename error that couldnt figure how to fix
                         ResultSet rs = ps.executeQuery();
                         double newBalance = 0;
@@ -51,13 +50,13 @@ public class Dashboard extends Menu{
                         }
                         if (newBalance >= 0) {
                             System.out.println("Your previous balance was $" + rs.getInt("balance"));
-                            System.out.println("You withdrew $" + Double.toString(withdrawalAmount));
+                            System.out.println("You withdrew $" + withdrawalAmount);
                             sql = "update members set balance=? where email = ?";
                             ps = conn.prepareStatement(sql);
                             ps.setDouble(1, newBalance);
-                            ps.setString(2, memberService.getSessionMember().getName());
+                            ps.setString(2, memberService.getSessionMember().getEmail());
                             ps.executeUpdate();
-                            System.out.println("New balance is $" + Double.toString(newBalance));
+                            System.out.println("New balance is $" + newBalance);// newBalance, is the double needed
                             menuRouter.transfer("/dashboard");
                         } else {
                             System.out.println("Withdrawal amount is greater than balance");
@@ -84,20 +83,20 @@ public class Dashboard extends Menu{
                     try (Connection conn = ConnectionFactory.getConnectionFactory().getConnection()) {
                         String sql = "select balance from members where email = ?";
                         PreparedStatement ps = conn.prepareStatement(sql);
-                        ps.setString(1, memberService.getSessionMember().getName());
+                        ps.setString(1, memberService.getSessionMember().getEmail());
                         ResultSet rs = ps.executeQuery();
                         double newBalance=0;
                         if(rs.next()) {
                             newBalance=rs.getDouble("balance")+depositAmount;
                         }
                         System.out.println("Your previous balance was $" + rs.getInt("balance"));
-                        System.out.println("You deposited $"+Double.toString(depositAmount));
+                        System.out.println("You deposited $"+ depositAmount);
                         sql="update members set balance=? where email = ?";
                         ps = conn.prepareStatement(sql);
                         ps.setDouble(1, newBalance);
-                        ps.setString(2, memberService.getSessionMember().getName());
+                        ps.setString(2, memberService.getSessionMember().getEmail());
                         ps.executeUpdate();
-                        System.out.println("Your new balance is $" +Double.toString(newBalance));
+                        System.out.println("Your new balance is $" + newBalance);
                         menuRouter.transfer("/dashboard");
                     } catch (SQLException e){
                         e.printStackTrace();
@@ -114,7 +113,7 @@ public class Dashboard extends Menu{
                 try(Connection conn = ConnectionFactory.getConnectionFactory().getConnection()){
                     String sql = "select balance from members where email = ?";
                     PreparedStatement ps = conn.prepareStatement(sql);
-                    ps.setString(1, memberService.getSessionMember().getName());
+                    ps.setString(1, memberService.getSessionMember().getEmail());
                     ResultSet rs = ps.executeQuery();
                     if(rs.next()) {
                         System.out.println("Your balance is $" + rs.getDouble("balance"));

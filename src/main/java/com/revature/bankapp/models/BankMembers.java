@@ -2,8 +2,9 @@ package com.revature.bankapp.models;
 
 public class BankMembers {
 
-    private static String email;
-    private static String password;
+    private double balance;
+    private String email;
+    private String password;
     public BankMembers() {
         super(); //calling the Object class to inherit from, since we will override toString method below
     }
@@ -15,25 +16,29 @@ public class BankMembers {
         this.password = password;
     }
 
-    public static BankMembers getSessionMember() {
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public BankMembers getSessionMember() {
             return null;
     }
 
     // the following methods are referred to as setters and getters.
     // They assign information to the objects parameters, and return the information with getters
-    public static void setEmail(String email) {
-        BankMembers.email = email;
+    public void setEmail(String email) {
+        this.email = email;
     }
-    public static String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public static boolean get(int i) {
+    public boolean get(int i) {
         return false;
-    }
-
-    public static void setFullName(String s) {
-
     }
 
     public String getPassword() {
@@ -50,7 +55,7 @@ public class BankMembers {
         return "Member{" +"email='" + email + '}';
     }
 
-    public static void setPassword(String password) {
-        BankMembers.password = password;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
